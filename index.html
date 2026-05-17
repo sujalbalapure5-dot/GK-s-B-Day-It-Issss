@@ -1,138 +1,365 @@
-export default function GKBirthdayCountdown() {
-  const targetDate = new Date('2026-05-29T00:00:00');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GK Birthday Countdown 💖</title>
 
-  const calculateTimeLeft = () => {
-    const now = new Date();
-    const difference = targetDate - now;
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    if (difference <= 0) {
-      return {
-        days: 0,
-        hours: 0,
-        minutes: 0,
-        seconds: 0,
-      };
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
     }
 
-    return {
-      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-      minutes: Math.floor((difference / 1000 / 60) % 60),
-      seconds: Math.floor((difference / 1000) % 60),
-    };
-  };
+    body{
+      min-height:100vh;
+      overflow:hidden;
+      background:#05010d;
+      color:white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+    }
 
-  const [timeLeft, setTimeLeft] = React.useState(calculateTimeLeft());
+    .bg{
+      position:absolute;
+      inset:0;
+      background:
+      radial-gradient(circle at top left,#ff008844,transparent 30%),
+      radial-gradient(circle at bottom right,#7b2cff44,transparent 30%),
+      linear-gradient(135deg,#05010d,#13091f,#090012);
+      z-index:-2;
+    }
 
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
+    .glow{
+      position:absolute;
+      width:500px;
+      height:500px;
+      border-radius:50%;
+      background:#ff149355;
+      filter:blur(120px);
+      animation:float 8s ease-in-out infinite;
+      z-index:-1;
+    }
 
-    return () => clearInterval(timer);
-  }, []);
+    .glow2{
+      background:#7b2cff55;
+      right:-100px;
+      bottom:-100px;
+      animation-delay:2s;
+    }
 
-  const memories = [
-    'The day we met changed everything ✨',
-    'Every conversation with you feels special 💌',
-    'You make ordinary days feel magical 🌸',
-    '29th May — the day my favorite person was born 💖',
-  ];
+    @keyframes float{
+      0%,100%{
+        transform:translateY(0px);
+      }
+      50%{
+        transform:translateY(-30px);
+      }
+    }
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-100 via-rose-50 to-purple-100 flex items-center justify-center p-6 overflow-hidden relative">
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-10 left-10 text-5xl animate-bounce">💖</div>
-        <div className="absolute top-40 right-16 text-4xl animate-pulse">✨</div>
-        <div className="absolute bottom-20 left-20 text-6xl animate-bounce">🌸</div>
-        <div className="absolute bottom-32 right-10 text-5xl animate-pulse">💌</div>
-      </div>
+    .container{
+      width:90%;
+      max-width:1200px;
+      text-align:center;
+      padding:40px;
+      backdrop-filter:blur(20px);
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:40px;
+      box-shadow:0 0 60px rgba(255,255,255,0.05);
+    }
 
-      <div className="max-w-5xl w-full grid md:grid-cols-2 gap-8 relative z-10">
-        <div className="backdrop-blur-xl bg-white/60 border border-white/40 rounded-3xl shadow-2xl p-8 flex flex-col justify-center">
-          <p className="uppercase tracking-[0.3em] text-sm text-rose-500 font-semibold mb-3">
-            Countdown to GK’s Birthday
-          </p>
+    .tag{
+      display:inline-block;
+      padding:12px 25px;
+      border-radius:100px;
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.1);
+      margin-bottom:30px;
+      font-size:14px;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      color:#ffd6ec;
+    }
 
-          <h1 className="text-5xl md:text-6xl font-black text-gray-800 leading-tight mb-6">
-            Counting every second till <span className="text-rose-500">29 May 2026</span>
-          </h1>
+    h1{
+      font-size:clamp(3rem,8vw,7rem);
+      line-height:1;
+      font-weight:800;
+      margin-bottom:25px;
+    }
 
-          <p className="text-lg text-gray-600 leading-relaxed mb-8">
-            A tiny little corner on the internet made just for GK. Every passing second is taking us closer to her special day 💖
-          </p>
+    .gradient{
+      background:linear-gradient(90deg,#ff4da6,#ffb3d9,#9d7bff);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {[
-              { label: 'Days', value: timeLeft.days },
-              { label: 'Hours', value: timeLeft.hours },
-              { label: 'Minutes', value: timeLeft.minutes },
-              { label: 'Seconds', value: timeLeft.seconds },
-            ].map((item) => (
-              <div
-                key={item.label}
-                className="bg-white/70 border border-white/60 rounded-2xl p-5 text-center shadow-lg hover:scale-105 transition-transform duration-300"
-              >
-                <div className="text-4xl font-black text-rose-500">
-                  {String(item.value).padStart(2, '0')}
-                </div>
-                <div className="text-gray-600 mt-2 font-medium">
-                  {item.label}
-                </div>
-              </div>
-            ))}
-          </div>
+    .subtitle{
+      max-width:800px;
+      margin:auto;
+      color:#d8d8d8;
+      font-size:1.2rem;
+      line-height:1.8;
+      margin-bottom:60px;
+    }
 
-          <div className="mt-8 bg-gradient-to-r from-rose-500 to-pink-500 text-white rounded-2xl p-5 shadow-xl">
-            <p className="text-lg font-semibold">
-              “Some people become memories. You became home.” 💫
-            </p>
-          </div>
-        </div>
+    .countdown{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      gap:25px;
+      margin-bottom:50px;
+    }
 
-        <div className="backdrop-blur-xl bg-white/60 border border-white/40 rounded-3xl shadow-2xl p-8 flex flex-col justify-between">
-          <div>
-            <h2 className="text-3xl font-bold text-gray-800 mb-6">
-              Reasons why GK is special 🌷
-            </h2>
+    .card{
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.08);
+      padding:40px 20px;
+      border-radius:30px;
+      backdrop-filter:blur(20px);
+      transition:0.4s;
+    }
 
-            <div className="space-y-4">
-              {memories.map((memory, index) => (
-                <div
-                  key={index}
-                  className="bg-white/70 rounded-2xl p-4 border border-white/50 shadow-md hover:translate-x-2 transition-transform duration-300"
-                >
-                  <p className="text-gray-700 text-lg">{memory}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+    .card:hover{
+      transform:translateY(-10px) scale(1.03);
+      box-shadow:0 0 40px rgba(255,255,255,0.08);
+    }
 
-          <div className="mt-8 rounded-3xl overflow-hidden shadow-xl border border-white/50">
-            <img
-              src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=1200&auto=format&fit=crop"
-              alt="Romantic aesthetic"
-              className="w-full h-64 object-cover"
-            />
-          </div>
-        </div>
-      </div>
+    .number{
+      font-size:4rem;
+      font-weight:800;
+      background:linear-gradient(to bottom,#ffffff,#999);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
 
-      {timeLeft.days === 0 &&
-        timeLeft.hours === 0 &&
-        timeLeft.minutes === 0 &&
-        timeLeft.seconds === 0 && (
-          <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-6">
-            <div className="bg-white rounded-3xl p-10 text-center max-w-2xl shadow-2xl">
-              <h1 className="text-6xl font-black text-rose-500 mb-6">
-                Happy Birthday GK 🎂
-              </h1>
-              <p className="text-2xl text-gray-700 leading-relaxed">
-                Today is all about you. Thank you for bringing happiness, warmth, and beautiful memories into my life 💖
-              </p>
-            </div>
-          </div>
-        )}
+    .label{
+      margin-top:10px;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      color:#cfcfcf;
+      font-size:0.9rem;
+    }
+
+    .message{
+      margin-top:30px;
+      padding:35px;
+      border-radius:30px;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      font-size:1.15rem;
+      line-height:2;
+      color:#ededed;
+    }
+
+    .heart{
+      position:absolute;
+      color:#ff4da6;
+      animation:hearts 10s linear infinite;
+      opacity:0.7;
+    }
+
+    @keyframes hearts{
+      0%{
+        transform:translateY(100vh) scale(0.5);
+        opacity:0;
+      }
+      20%{
+        opacity:1;
+      }
+      100%{
+        transform:translateY(-10vh) scale(1.4);
+        opacity:0;
+      }
+    }
+
+    .birthday-screen{
+      position:fixed;
+      inset:0;
+      background:#05010d;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      text-align:center;
+      z-index:100;
+      padding:20px;
+    }
+
+    .birthday-screen h2{
+      font-size:clamp(3rem,8vw,6rem);
+      margin-bottom:20px;
+    }
+
+    .birthday-screen p{
+      max-width:700px;
+      line-height:1.8;
+      font-size:1.3rem;
+      color:#ddd;
+    }
+
+    @media(max-width:768px){
+      .container{
+        padding:25px;
+      }
+
+      .number{
+        font-size:3rem;
+      }
+
+      .subtitle{
+        font-size:1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="bg"></div>
+  <div class="glow"></div>
+  <div class="glow glow2"></div>
+
+  <div class="container">
+
+    <div class="tag">
+      Countdown To GK's Birthday ✨
     </div>
-  );
-}
+
+    <h1>
+      Every second closer to
+      <span class="gradient">29 May 💖</span>
+    </h1>
+
+    <p class="subtitle">
+      A little universe made only for GK.<br>
+      Counting every heartbeat, memory, smile and moment until the birthday of the most special person ✨
+    </p>
+
+    <div class="countdown">
+
+      <div class="card">
+        <div class="number" id="days">00</div>
+        <div class="label">Days</div>
+      </div>
+
+      <div class="card">
+        <div class="number" id="hours">00</div>
+        <div class="label">Hours</div>
+      </div>
+
+      <div class="card">
+        <div class="number" id="minutes">00</div>
+        <div class="label">Minutes</div>
+      </div>
+
+      <div class="card">
+        <div class="number" id="seconds">00</div>
+        <div class="label">Seconds</div>
+      </div>
+
+    </div>
+
+    <div class="message">
+      “Some people become memories.<br>
+      You became home.” 💫
+      <br><br>
+      Born on <b>29 May 2005</b> — the day the world unknowingly became more beautiful 🌸
+    </div>
+
+  </div>
+
+  <div class="birthday-screen" id="birthdayScreen">
+    <h2 class="gradient">Happy Birthday GK 🎂</h2>
+
+    <p>
+      Today is all about you 💖<br><br>
+      Thank you for existing, for your smile, your warmth,
+      and for making life feel softer and happier ✨
+    </p>
+  </div>
+
+  <script>
+
+    const targetDate = new Date("May 29, 2026 00:00:00").getTime();
+
+    function updateCountdown(){
+
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if(distance < 0){
+
+        document.getElementById("birthdayScreen").style.display = "flex";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+      const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24))
+        / (1000 * 60 * 60)
+      );
+
+      const minutes = Math.floor(
+        (distance % (1000 * 60 * 60))
+        / (1000 * 60)
+      );
+
+      const seconds = Math.floor(
+        (distance % (1000 * 60))
+        / 1000
+      );
+
+      document.getElementById("days").innerText =
+      String(days).padStart(2,'0');
+
+      document.getElementById("hours").innerText =
+      String(hours).padStart(2,'0');
+
+      document.getElementById("minutes").innerText =
+      String(minutes).padStart(2,'0');
+
+      document.getElementById("seconds").innerText =
+      String(seconds).padStart(2,'0');
+    }
+
+    setInterval(updateCountdown,1000);
+    updateCountdown();
+
+    function createHeart(){
+
+      const heart = document.createElement("div");
+
+      heart.classList.add("heart");
+
+      heart.innerHTML = "💖";
+
+      heart.style.left = Math.random() * 100 + "vw";
+
+      heart.style.fontSize =
+      Math.random() * 25 + 15 + "px";
+
+      heart.style.animationDuration =
+      Math.random() * 5 + 5 + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(()=>{
+        heart.remove();
+      },10000);
+    }
+
+    setInterval(createHeart,500);
+
+  </script>
+
+</body>
+</html>
