@@ -25,116 +25,181 @@ display:flex;
 align-items:center;
 justify-content:center;
 position:relative;
-transition:opacity 2s ease;
 }
 
+/* ✨ romantic animated background */
 .bg{
 position:absolute;
 inset:0;
 background:
-radial-gradient(circle at top left,#ff008844,transparent 30%),
-radial-gradient(circle at bottom right,#7b2cff44,transparent 30%),
-linear-gradient(135deg,#05010d,#13091f,#090012);
+radial-gradient(circle at 20% 20%, rgba(255, 0, 122, 0.25), transparent 35%),
+radial-gradient(circle at 80% 70%, rgba(123, 44, 255, 0.25), transparent 40%),
+radial-gradient(circle at 50% 50%, rgba(255, 182, 193, 0.12), transparent 60%),
+linear-gradient(135deg,#05010d,#120018,#0a0015);
+animation:bgMove 10s ease-in-out infinite alternate;
 z-index:-2;
 }
 
+@keyframes bgMove{
+0%{filter:hue-rotate(0deg);}
+100%{filter:hue-rotate(20deg);}
+}
+
+/* soft glow orbs */
 .glow{
 position:absolute;
-width:500px;
-height:500px;
+width:520px;
+height:520px;
 border-radius:50%;
-background:#ff149355;
+background:radial-gradient(circle, rgba(255,20,147,0.4), transparent 70%);
 filter:blur(120px);
-animation:float 8s ease-in-out infinite;
+animation:float 6s ease-in-out infinite;
 z-index:-1;
 }
 
 .glow2{
-background:#7b2cff55;
-right:-100px;
-bottom:-100px;
+background:radial-gradient(circle, rgba(155,77,255,0.4), transparent 70%);
+right:-120px;
+bottom:-120px;
 animation-delay:2s;
 }
 
 @keyframes float{
-0%,100%{transform:translateY(0px);}
-50%{transform:translateY(-30px);}
+0%,100%{transform:translateY(0px) scale(1);}
+50%{transform:translateY(-25px) scale(1.05);}
 }
 
+/* container */
 .container{
 width:90%;
 max-width:1200px;
 text-align:center;
 padding:40px;
-backdrop-filter:blur(20px);
+backdrop-filter:blur(25px);
 background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
-border-radius:40px;
-box-shadow:0 0 60px rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+border-radius:45px;
+box-shadow:0 0 80px rgba(255,20,147,0.08);
 }
 
+/* tag */
 .tag{
-padding:12px 25px;
+display:inline-block;
+padding:12px 26px;
 border-radius:100px;
 background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.12);
 margin-bottom:25px;
+font-size:13px;
 letter-spacing:4px;
 text-transform:uppercase;
 color:#ffd6ec;
-display:inline-block;
 }
 
+/* title */
 h1{
 font-size:clamp(3rem,8vw,7rem);
 font-weight:800;
+line-height:1.1;
 }
 
 .gradient{
-background:linear-gradient(90deg,#ff4da6,#ffb3d9,#9d7bff);
+background:linear-gradient(90deg,#ff4da6,#ffb3d9,#9d7bff,#ff66c4);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+background-size:300%;
+animation:shine 5s linear infinite;
+}
+
+@keyframes shine{
+0%{background-position:0%;}
+100%{background-position:300%;}
 }
 
 .subtitle{
 max-width:800px;
 margin:auto;
-color:#d8d8d8;
+color:#e0e0e0;
 font-size:1.2rem;
 line-height:1.8;
-margin-bottom:50px;
+margin-bottom:55px;
+opacity:0.9;
 }
 
+/* countdown cards */
 .countdown{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
 gap:25px;
-margin-bottom:40px;
+margin-bottom:45px;
 }
 
 .card{
 background:rgba(255,255,255,0.06);
-padding:35px 20px;
+border:1px solid rgba(255,255,255,0.1);
+padding:40px 20px;
 border-radius:30px;
 transition:0.4s;
+backdrop-filter:blur(10px);
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.04);
+box-shadow:0 0 40px rgba(255,105,180,0.15);
 }
 
 .number{
 font-size:4rem;
 font-weight:800;
+background:linear-gradient(to bottom,#fff,#bbb);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 .label{
+margin-top:10px;
 letter-spacing:3px;
-color:#ccc;
+text-transform:uppercase;
+color:#d0d0d0;
+font-size:0.9rem;
 }
 
+/* message */
 .message{
 margin-top:30px;
-padding:30px;
+padding:35px;
 border-radius:30px;
 background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+font-size:1.15rem;
+line-height:2;
+color:#f2f2f2;
+box-shadow:0 0 30px rgba(255,105,180,0.08);
 }
 
+/* ❤️ floating hearts */
+.heart{
+position:absolute;
+color:#ff4da6;
+opacity:0.8;
+animation:floatUp linear forwards;
+pointer-events:none;
+filter:drop-shadow(0 0 8px #ff4da6);
+}
+
+@keyframes floatUp{
+0%{
+transform:translateY(100vh) scale(0.5) rotate(0deg);
+opacity:0;
+}
+20%{opacity:1;}
+100%{
+transform:translateY(-10vh) scale(1.6) rotate(360deg);
+opacity:0;
+}
+}
+
+/* final birthday screen */
 .birthday-screen{
 position:fixed;
 inset:0;
@@ -143,41 +208,16 @@ align-items:center;
 justify-content:center;
 flex-direction:column;
 text-align:center;
-background:radial-gradient(circle,#ff149322,transparent 60%),#05010d;
+background:
+radial-gradient(circle,#ff149322,transparent 60%),
+#05010d;
 z-index:100;
 }
 
 .birthday-screen h2{
 font-size:clamp(3rem,8vw,6rem);
-margin-bottom:15px;
-}
-
-.choose-screen{
-position:fixed;
-inset:0;
-display:none;
-align-items:center;
-justify-content:center;
-flex-direction:column;
-background:#05010d;
-z-index:200;
-text-align:center;
-padding:20px;
-}
-
-.option{
-margin:15px;
-padding:20px 40px;
-border-radius:20px;
-background:rgba(255,255,255,0.08);
-border:1px solid rgba(255,255,255,0.15);
-cursor:pointer;
-transition:0.3s;
-}
-
-.option:hover{
-transform:scale(1.05);
-background:rgba(255,255,255,0.15);
+margin-bottom:20px;
+text-shadow:0 0 30px #ff4da6;
 }
 
 </style>
@@ -189,15 +229,14 @@ background:rgba(255,255,255,0.15);
 <div class="glow"></div>
 <div class="glow glow2"></div>
 
-<!-- COUNTDOWN -->
-<div class="container" id="countdownContainer">
+<div class="container">
 
 <div class="tag">Countdown To GK’s Birthday ✨</div>
 
 <h1>Happy Birthday <span class="gradient">GK 💖</span></h1>
 
 <p class="subtitle">
-A universe waiting to celebrate you… every second closer 🌸
+A universe softly falling in love with your existence… every second closer 🌸
 </p>
 
 <div class="countdown">
@@ -209,34 +248,18 @@ A universe waiting to celebrate you… every second closer 🌸
 
 <div class="message">
 “Some people become memories.<br>
-You became home.” 💫
+You became the feeling I never want to lose.” 💖
 </div>
 
 </div>
 
-<!-- BIRTHDAY SCREEN -->
 <div class="birthday-screen" id="birthdayScreen">
-<h2 class="gradient">HAPPY BIRTHDAY GK 🎂</h2>
-<p>Your surprise is waiting… ❤️</p>
-</div>
-
-<!-- CHOOSE SCREEN -->
-<div class="choose-screen" id="chooseScreen">
-
-<h2 class="gradient">Choose Your Gift Experience 🎁</h2>
-
-<div class="option" onclick="goNetflix()">🎬 Watch like a Netflix Experience</div>
-
-<div class="option" onclick="goAnimated()">🎞 Watch Animated Story</div>
-
+<h2 class="gradient">HAPPY BIRTHDAY GK 🎂💖</h2>
 </div>
 
 <script>
 
 const targetDate = new Date("May 29, 2026 00:00:00").getTime();
-
-const netflixLink = "PASTE_NETFLIX_PAGE_LINK_HERE";
-const animatedLink = "PASTE_ANIMATED_PAGE_LINK_HERE";
 
 function updateCountdown(){
 
@@ -244,16 +267,7 @@ const now = new Date().getTime();
 const distance = targetDate - now;
 
 if(distance < 0){
-
 document.getElementById("birthdayScreen").style.display="flex";
-
-setTimeout(()=>{
-
-document.getElementById("birthdayScreen").style.display="none";
-document.getElementById("chooseScreen").style.display="flex";
-
-},4000);
-
 return;
 }
 
@@ -273,13 +287,27 @@ Math.floor((distance%(1000*60))/1000);
 
 setInterval(updateCountdown,1000);
 
-function goNetflix(){
-window.location.href = netflixLink;
+/* ❤️ more natural floating hearts */
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.classList.add("heart");
+
+const hearts=["💖","❤️","💕","💗","💘"];
+heart.innerHTML = hearts[Math.floor(Math.random()*hearts.length)];
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+15)+"px";
+heart.style.animationDuration=(Math.random()*4+4)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),9000);
+
 }
 
-function goAnimated(){
-window.location.href = animatedLink;
-}
+setInterval(createHeart,250);
 
 </script>
 
