@@ -1,483 +1,287 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GK Birthday Countdown 💖</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>GK Birthday Countdown 💖</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <style>
+<style>
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:'Poppins',sans-serif;
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
 
-    body{
-      min-height:100vh;
-      overflow:hidden;
-      background:#05010d;
-      color:white;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      position:relative;
-      transition:opacity 2s ease;
-    }
+body{
+min-height:100vh;
+overflow:hidden;
+background:#05010d;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+transition:opacity 2s ease;
+}
 
-    .bg{
-      position:absolute;
-      inset:0;
-      background:
-      radial-gradient(circle at top left,#ff008844,transparent 30%),
-      radial-gradient(circle at bottom right,#7b2cff44,transparent 30%),
-      linear-gradient(135deg,#05010d,#13091f,#090012);
-      z-index:-2;
-    }
+.bg{
+position:absolute;
+inset:0;
+background:
+radial-gradient(circle at top left,#ff008844,transparent 30%),
+radial-gradient(circle at bottom right,#7b2cff44,transparent 30%),
+linear-gradient(135deg,#05010d,#13091f,#090012);
+z-index:-2;
+}
 
-    .glow{
-      position:absolute;
-      width:500px;
-      height:500px;
-      border-radius:50%;
-      background:#ff149355;
-      filter:blur(120px);
-      animation:float 8s ease-in-out infinite;
-      z-index:-1;
-    }
+.glow{
+position:absolute;
+width:500px;
+height:500px;
+border-radius:50%;
+background:#ff149355;
+filter:blur(120px);
+animation:float 8s ease-in-out infinite;
+z-index:-1;
+}
 
-    .glow2{
-      background:#7b2cff55;
-      right:-100px;
-      bottom:-100px;
-      animation-delay:2s;
-    }
+.glow2{
+background:#7b2cff55;
+right:-100px;
+bottom:-100px;
+animation-delay:2s;
+}
 
-    @keyframes float{
-      0%,100%{
-        transform:translateY(0px);
-      }
-      50%{
-        transform:translateY(-30px);
-      }
-    }
+@keyframes float{
+0%,100%{transform:translateY(0px);}
+50%{transform:translateY(-30px);}
+}
 
-    .container{
-      width:90%;
-      max-width:1200px;
-      text-align:center;
-      padding:40px;
-      backdrop-filter:blur(20px);
-      background:rgba(255,255,255,0.05);
-      border:1px solid rgba(255,255,255,0.08);
-      border-radius:40px;
-      box-shadow:0 0 60px rgba(255,255,255,0.05);
-    }
+.container{
+width:90%;
+max-width:1200px;
+text-align:center;
+padding:40px;
+backdrop-filter:blur(20px);
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:40px;
+box-shadow:0 0 60px rgba(255,255,255,0.05);
+}
 
-    .tag{
-      display:inline-block;
-      padding:12px 25px;
-      border-radius:100px;
-      background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.1);
-      margin-bottom:30px;
-      font-size:14px;
-      letter-spacing:4px;
-      text-transform:uppercase;
-      color:#ffd6ec;
-    }
+.tag{
+padding:12px 25px;
+border-radius:100px;
+background:rgba(255,255,255,0.08);
+margin-bottom:25px;
+letter-spacing:4px;
+text-transform:uppercase;
+color:#ffd6ec;
+display:inline-block;
+}
 
-    h1{
-      font-size:clamp(3rem,8vw,7rem);
-      line-height:1;
-      font-weight:800;
-      margin-bottom:25px;
-    }
+h1{
+font-size:clamp(3rem,8vw,7rem);
+font-weight:800;
+}
 
-    .gradient{
-      background:linear-gradient(90deg,#ff4da6,#ffb3d9,#9d7bff);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
+.gradient{
+background:linear-gradient(90deg,#ff4da6,#ffb3d9,#9d7bff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
 
-    .subtitle{
-      max-width:800px;
-      margin:auto;
-      color:#d8d8d8;
-      font-size:1.2rem;
-      line-height:1.8;
-      margin-bottom:60px;
-    }
+.subtitle{
+max-width:800px;
+margin:auto;
+color:#d8d8d8;
+font-size:1.2rem;
+line-height:1.8;
+margin-bottom:50px;
+}
 
-    .countdown{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-      gap:25px;
-      margin-bottom:50px;
-    }
+.countdown{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:25px;
+margin-bottom:40px;
+}
 
-    .card{
-      background:rgba(255,255,255,0.06);
-      border:1px solid rgba(255,255,255,0.08);
-      padding:40px 20px;
-      border-radius:30px;
-      backdrop-filter:blur(20px);
-      transition:0.4s;
-    }
+.card{
+background:rgba(255,255,255,0.06);
+padding:35px 20px;
+border-radius:30px;
+transition:0.4s;
+}
 
-    .card:hover{
-      transform:translateY(-10px) scale(1.03);
-      box-shadow:0 0 40px rgba(255,255,255,0.08);
-    }
+.number{
+font-size:4rem;
+font-weight:800;
+}
 
-    .number{
-      font-size:4rem;
-      font-weight:800;
-      background:linear-gradient(to bottom,#ffffff,#999);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
+.label{
+letter-spacing:3px;
+color:#ccc;
+}
 
-    .label{
-      margin-top:10px;
-      letter-spacing:3px;
-      text-transform:uppercase;
-      color:#cfcfcf;
-      font-size:0.9rem;
-    }
+.message{
+margin-top:30px;
+padding:30px;
+border-radius:30px;
+background:rgba(255,255,255,0.05);
+}
 
-    .message{
-      margin-top:30px;
-      padding:35px;
-      border-radius:30px;
-      background:rgba(255,255,255,0.05);
-      border:1px solid rgba(255,255,255,0.08);
-      font-size:1.15rem;
-      line-height:2;
-      color:#ededed;
-    }
+.birthday-screen{
+position:fixed;
+inset:0;
+display:none;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+text-align:center;
+background:radial-gradient(circle,#ff149322,transparent 60%),#05010d;
+z-index:100;
+}
 
-    .heart{
-      position:absolute;
-      color:#ff4da6;
-      animation:hearts 10s linear infinite;
-      opacity:0.7;
-      pointer-events:none;
-    }
+.birthday-screen h2{
+font-size:clamp(3rem,8vw,6rem);
+margin-bottom:15px;
+}
 
-    @keyframes hearts{
-      0%{
-        transform:translateY(100vh) scale(0.5);
-        opacity:0;
-      }
-      20%{
-        opacity:1;
-      }
-      100%{
-        transform:translateY(-10vh) scale(1.4);
-        opacity:0;
-      }
-    }
+.choose-screen{
+position:fixed;
+inset:0;
+display:none;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+background:#05010d;
+z-index:200;
+text-align:center;
+padding:20px;
+}
 
-    .birthday-screen{
-      position:fixed;
-      inset:0;
-      background:
-      radial-gradient(circle at center,#ff149322,transparent 50%),
-      #05010d;
-      display:none;
-      align-items:center;
-      justify-content:center;
-      flex-direction:column;
-      text-align:center;
-      z-index:100;
-      padding:20px;
-      animation:fadeIn 2s ease;
-    }
+.option{
+margin:15px;
+padding:20px 40px;
+border-radius:20px;
+background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.15);
+cursor:pointer;
+transition:0.3s;
+}
 
-    .birthday-screen h2{
-      font-size:clamp(3rem,8vw,6rem);
-      margin-bottom:20px;
-    }
+.option:hover{
+transform:scale(1.05);
+background:rgba(255,255,255,0.15);
+}
 
-    .birthday-screen p{
-      max-width:700px;
-      line-height:1.8;
-      font-size:1.3rem;
-      color:#ddd;
-    }
-
-    @keyframes fadeIn{
-      from{
-        opacity:0;
-        transform:scale(1.1);
-      }
-      to{
-        opacity:1;
-        transform:scale(1);
-      }
-    }
-
-    @keyframes fadeOut{
-
-      0%{
-        opacity:0;
-        transform:scale(0.5) translateY(30px);
-      }
-
-      20%{
-        opacity:1;
-      }
-
-      100%{
-        opacity:0;
-        transform:scale(1.5) translateY(-100px);
-      }
-    }
-
-    @media(max-width:768px){
-
-      .container{
-        padding:25px;
-      }
-
-      .number{
-        font-size:3rem;
-      }
-
-      .subtitle{
-        font-size:1rem;
-      }
-    }
-
-  </style>
+</style>
 </head>
 
 <body>
 
-  <div class="bg"></div>
+<div class="bg"></div>
+<div class="glow"></div>
+<div class="glow glow2"></div>
 
-  <div class="glow"></div>
+<!-- COUNTDOWN -->
+<div class="container" id="countdownContainer">
 
-  <div class="glow glow2"></div>
+<div class="tag">Countdown To GK’s Birthday ✨</div>
 
-  <div class="container">
+<h1>Happy Birthday <span class="gradient">GK 💖</span></h1>
 
-    <div class="tag">
-      Countdown To GK's Birthday ✨
-    </div>
+<p class="subtitle">
+A universe waiting to celebrate you… every second closer 🌸
+</p>
 
-    <h1>
-      Every second closer to
-      <span class="gradient">29 May 💖</span>
-    </h1>
+<div class="countdown">
+<div class="card"><div class="number" id="days">00</div><div class="label">Days</div></div>
+<div class="card"><div class="number" id="hours">00</div><div class="label">Hours</div></div>
+<div class="card"><div class="number" id="minutes">00</div><div class="label">Minutes</div></div>
+<div class="card"><div class="number" id="seconds">00</div><div class="label">Seconds</div></div>
+</div>
 
-    <p class="subtitle">
-      A little universe made only for GK.<br>
-      Counting every heartbeat, memory, smile and moment until the birthday of the most special person ✨
-    </p>
+<div class="message">
+“Some people become memories.<br>
+You became home.” 💫
+</div>
 
-    <div class="countdown">
+</div>
 
-      <div class="card">
-        <div class="number" id="days">00</div>
-        <div class="label">Days</div>
-      </div>
+<!-- BIRTHDAY SCREEN -->
+<div class="birthday-screen" id="birthdayScreen">
+<h2 class="gradient">HAPPY BIRTHDAY GK 🎂</h2>
+<p>Your surprise is waiting… ❤️</p>
+</div>
 
-      <div class="card">
-        <div class="number" id="hours">00</div>
-        <div class="label">Hours</div>
-      </div>
+<!-- CHOOSE SCREEN -->
+<div class="choose-screen" id="chooseScreen">
 
-      <div class="card">
-        <div class="number" id="minutes">00</div>
-        <div class="label">Minutes</div>
-      </div>
+<h2 class="gradient">Choose Your Gift Experience 🎁</h2>
 
-      <div class="card">
-        <div class="number" id="seconds">00</div>
-        <div class="label">Seconds</div>
-      </div>
+<div class="option" onclick="goNetflix()">🎬 Watch like a Netflix Experience</div>
 
-    </div>
+<div class="option" onclick="goAnimated()">🎞 Watch Animated Story</div>
 
-    <div class="message">
-      “Some people become memories.<br>
-      You became home.” 💫
-      <br><br>
-      Born on <b>29 May 2005</b> — the day the world unknowingly became more beautiful 🌸
-    </div>
+</div>
 
-  </div>
+<script>
 
-  <div class="birthday-screen" id="birthdayScreen">
+const targetDate = new Date("May 29, 2026 00:00:00").getTime();
 
-    <h2 class="gradient">
-      Happy Birthday GK 🎂
-    </h2>
+const netflixLink = "PASTE_NETFLIX_PAGE_LINK_HERE";
+const animatedLink = "PASTE_ANIMATED_PAGE_LINK_HERE";
 
-    <p>
-      Today is all about you 💖<br><br>
+function updateCountdown(){
 
-      Thank you for existing, for your smile,
-      your warmth, and for making life feel
-      softer and happier ✨
-      <br><br>
+const now = new Date().getTime();
+const distance = targetDate - now;
 
-      Your surprise is waiting...
-    </p>
+if(distance < 0){
 
-  </div>
+document.getElementById("birthdayScreen").style.display="flex";
 
-  <script>
+setTimeout(()=>{
 
-    const targetDate =
-    new Date("May 29, 2026 00:00:00").getTime();
+document.getElementById("birthdayScreen").style.display="none";
+document.getElementById("chooseScreen").style.display="flex";
 
-    const surpriseWebsite =
-    "https://sujalbalapure5-dot.github.io/It-s-Always-Us/";
+},4000);
 
-    function updateCountdown(){
+return;
+}
 
-      const now = new Date().getTime();
+document.getElementById("days").innerText =
+Math.floor(distance/(1000*60*60*24));
 
-      const distance = targetDate - now;
+document.getElementById("hours").innerText =
+Math.floor((distance%(1000*60*60*24))/(1000*60*60));
 
-      if(distance < 0){
+document.getElementById("minutes").innerText =
+Math.floor((distance%(1000*60*60))/(1000*60));
 
-        document.getElementById(
-          "birthdayScreen"
-        ).style.display = "flex";
+document.getElementById("seconds").innerText =
+Math.floor((distance%(1000*60))/1000);
 
-        document.body.style.overflow = "hidden";
+}
 
-        createFinalCelebration();
+setInterval(updateCountdown,1000);
 
-        setTimeout(()=>{
+function goNetflix(){
+window.location.href = netflixLink;
+}
 
-          document.body.style.opacity = "0";
+function goAnimated(){
+window.location.href = animatedLink;
+}
 
-        },4000);
-
-        setTimeout(()=>{
-
-          window.location.href = surpriseWebsite;
-
-        },6500);
-
-        return;
-      }
-
-      const days = Math.floor(
-        distance / (1000 * 60 * 60 * 24)
-      );
-
-      const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24))
-        / (1000 * 60 * 60)
-      );
-
-      const minutes = Math.floor(
-        (distance % (1000 * 60 * 60))
-        / (1000 * 60)
-      );
-
-      const seconds = Math.floor(
-        (distance % (1000 * 60))
-        / 1000
-      );
-
-      document.getElementById("days").innerText =
-      String(days).padStart(2,'0');
-
-      document.getElementById("hours").innerText =
-      String(hours).padStart(2,'0');
-
-      document.getElementById("minutes").innerText =
-      String(minutes).padStart(2,'0');
-
-      document.getElementById("seconds").innerText =
-      String(seconds).padStart(2,'0');
-    }
-
-    setInterval(updateCountdown,1000);
-
-    updateCountdown();
-
-    function createHeart(){
-
-      const heart = document.createElement("div");
-
-      heart.classList.add("heart");
-
-      heart.innerHTML = "💖";
-
-      heart.style.left =
-      Math.random() * 100 + "vw";
-
-      heart.style.fontSize =
-      Math.random() * 25 + 15 + "px";
-
-      heart.style.animationDuration =
-      Math.random() * 5 + 5 + "s";
-
-      document.body.appendChild(heart);
-
-      setTimeout(()=>{
-        heart.remove();
-      },10000);
-    }
-
-    setInterval(createHeart,500);
-
-    function createFinalCelebration(){
-
-      for(let i=0;i<120;i++){
-
-        setTimeout(()=>{
-
-          const sparkle =
-          document.createElement("div");
-
-          sparkle.innerHTML =
-          ["💖","✨","🎂","🌸","💫"]
-          [Math.floor(Math.random()*5)];
-
-          sparkle.style.position = "fixed";
-
-          sparkle.style.left =
-          Math.random()*100 + "vw";
-
-          sparkle.style.top =
-          Math.random()*100 + "vh";
-
-          sparkle.style.fontSize =
-          Math.random()*40 + 20 + "px";
-
-          sparkle.style.zIndex = "9999";
-
-          sparkle.style.pointerEvents = "none";
-
-          sparkle.style.animation =
-          "fadeOut 4s forwards";
-
-          document.body.appendChild(sparkle);
-
-          setTimeout(()=>{
-            sparkle.remove();
-          },4000);
-
-        },i*80);
-      }
-    }
-
-  </script>
+</script>
 
 </body>
 </html>
-```
