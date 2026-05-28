@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GK Birthday Countdown 💖</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
@@ -18,26 +18,24 @@ font-family:'Poppins',sans-serif;
 
 body{
 min-height:100vh;
-overflow:hidden;
-background:#05010d;
-color:white;
 display:flex;
 align-items:center;
 justify-content:center;
-position:relative;
+overflow:hidden;
+background:#05010d;
+color:white;
 }
 
-/* ✨ romantic animated background */
+/* romantic background */
 .bg{
 position:absolute;
 inset:0;
 background:
-radial-gradient(circle at 20% 20%, rgba(255, 0, 122, 0.25), transparent 35%),
-radial-gradient(circle at 80% 70%, rgba(123, 44, 255, 0.25), transparent 40%),
-radial-gradient(circle at 50% 50%, rgba(255, 182, 193, 0.12), transparent 60%),
-linear-gradient(135deg,#05010d,#120018,#0a0015);
+radial-gradient(circle at 20% 30%, rgba(255,0,120,0.25), transparent 40%),
+radial-gradient(circle at 80% 70%, rgba(120,60,255,0.25), transparent 40%),
+linear-gradient(135deg,#05010d,#120018,#070012);
 animation:bgMove 10s ease-in-out infinite alternate;
-z-index:-2;
+z-index:-3;
 }
 
 @keyframes bgMove{
@@ -45,161 +43,91 @@ z-index:-2;
 100%{filter:hue-rotate(20deg);}
 }
 
-/* soft glow orbs */
-.glow{
-position:absolute;
-width:520px;
-height:520px;
-border-radius:50%;
-background:radial-gradient(circle, rgba(255,20,147,0.4), transparent 70%);
-filter:blur(120px);
-animation:float 6s ease-in-out infinite;
-z-index:-1;
-}
-
-.glow2{
-background:radial-gradient(circle, rgba(155,77,255,0.4), transparent 70%);
-right:-120px;
-bottom:-120px;
-animation-delay:2s;
-}
-
-@keyframes float{
-0%,100%{transform:translateY(0px) scale(1);}
-50%{transform:translateY(-25px) scale(1.05);}
-}
-
-/* container */
+/* MAIN BOX */
 .container{
 width:90%;
-max-width:1200px;
+max-width:1000px;
 text-align:center;
-padding:40px;
+padding:50px;
 backdrop-filter:blur(25px);
 background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.1);
-border-radius:45px;
-box-shadow:0 0 80px rgba(255,20,147,0.08);
-}
-
-/* tag */
-.tag{
-display:inline-block;
-padding:12px 26px;
-border-radius:100px;
-background:rgba(255,255,255,0.08);
 border:1px solid rgba(255,255,255,0.12);
-margin-bottom:25px;
-font-size:13px;
-letter-spacing:4px;
-text-transform:uppercase;
-color:#ffd6ec;
+border-radius:40px;
+box-shadow:0 0 90px rgba(255,20,147,0.15);
 }
 
-/* title */
+/* TITLE */
 h1{
-font-size:clamp(3rem,8vw,7rem);
-font-weight:800;
-line-height:1.1;
-}
-
-.gradient{
-background:linear-gradient(90deg,#ff4da6,#ffb3d9,#9d7bff,#ff66c4);
+font-size:clamp(2.5rem,7vw,5.5rem);
+background:linear-gradient(90deg,#ff4da6,#ffb3d9,#9d7bff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-background-size:300%;
-animation:shine 5s linear infinite;
+margin-bottom:10px;
 }
 
-@keyframes shine{
-0%{background-position:0%;}
-100%{background-position:300%;}
-}
-
-.subtitle{
-max-width:800px;
-margin:auto;
-color:#e0e0e0;
-font-size:1.2rem;
+p{
+opacity:0.85;
+margin-bottom:35px;
 line-height:1.8;
-margin-bottom:55px;
-opacity:0.9;
 }
 
-/* countdown cards */
+/* countdown */
 .countdown{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:25px;
-margin-bottom:45px;
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:20px;
 }
 
 .card{
+padding:25px;
+border-radius:25px;
 background:rgba(255,255,255,0.06);
-border:1px solid rgba(255,255,255,0.1);
-padding:40px 20px;
-border-radius:30px;
-transition:0.4s;
-backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,0.12);
+transition:0.3s;
 }
 
 .card:hover{
-transform:translateY(-10px) scale(1.04);
-box-shadow:0 0 40px rgba(255,105,180,0.15);
+transform:scale(1.05);
 }
 
 .number{
-font-size:4rem;
+font-size:3rem;
 font-weight:800;
-background:linear-gradient(to bottom,#fff,#bbb);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
 }
 
 .label{
-margin-top:10px;
-letter-spacing:3px;
-text-transform:uppercase;
-color:#d0d0d0;
-font-size:0.9rem;
+opacity:0.7;
 }
 
-/* message */
-.message{
-margin-top:30px;
-padding:35px;
-border-radius:30px;
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.1);
-font-size:1.15rem;
-line-height:2;
-color:#f2f2f2;
-box-shadow:0 0 30px rgba(255,105,180,0.08);
-}
+/* =========================
+   💖 FIXED FLOATING HEARTS
+========================= */
 
-/* ❤️ floating hearts */
 .heart{
 position:absolute;
-color:#ff4da6;
+bottom:-20px;
+font-size:20px;
 opacity:0.8;
 animation:floatUp linear forwards;
 pointer-events:none;
-filter:drop-shadow(0 0 8px #ff4da6);
+filter:drop-shadow(0 0 10px #ff4da6);
 }
 
 @keyframes floatUp{
 0%{
-transform:translateY(100vh) scale(0.5) rotate(0deg);
+transform:translateY(0) scale(0.6);
 opacity:0;
 }
-20%{opacity:1;}
+10%{
+opacity:1;
+}
 100%{
-transform:translateY(-10vh) scale(1.6) rotate(360deg);
+transform:translateY(-120vh) scale(1.6);
 opacity:0;
 }
 }
 
-/* final birthday screen */
+/* birthday screen */
 .birthday-screen{
 position:fixed;
 inset:0;
@@ -208,16 +136,20 @@ align-items:center;
 justify-content:center;
 flex-direction:column;
 text-align:center;
-background:
-radial-gradient(circle,#ff149322,transparent 60%),
-#05010d;
+background:radial-gradient(circle,#ff149322,transparent 60%),#05010d;
 z-index:100;
 }
 
-.birthday-screen h2{
-font-size:clamp(3rem,8vw,6rem);
-margin-bottom:20px;
-text-shadow:0 0 30px #ff4da6;
+button{
+margin-top:20px;
+padding:18px 40px;
+border:none;
+border-radius:40px;
+cursor:pointer;
+font-size:1rem;
+font-weight:600;
+color:white;
+background:linear-gradient(90deg,#ff4da6,#9d7bff);
 }
 
 </style>
@@ -226,88 +158,90 @@ text-shadow:0 0 30px #ff4da6;
 <body>
 
 <div class="bg"></div>
-<div class="glow"></div>
-<div class="glow glow2"></div>
 
-<div class="container">
+<div class="container" id="main">
 
-<div class="tag">Countdown To GK’s Birthday ✨</div>
-
-<h1>Happy Birthday <span class="gradient">GK 💖</span></h1>
-
-<p class="subtitle">
-A universe softly falling in love with your existence… every second closer 🌸
-</p>
+<h1>Happy Birthday GK 🎂💖</h1>
+<p>Every second falling in love with your existence ✨</p>
 
 <div class="countdown">
-<div class="card"><div class="number" id="days">00</div><div class="label">Days</div></div>
-<div class="card"><div class="number" id="hours">00</div><div class="label">Hours</div></div>
-<div class="card"><div class="number" id="minutes">00</div><div class="label">Minutes</div></div>
-<div class="card"><div class="number" id="seconds">00</div><div class="label">Seconds</div></div>
-</div>
 
-<div class="message">
-“Some people become memories.<br>
-You became the feeling I never want to lose.” 💖
+<div class="card"><div class="number" id="d">00</div><div class="label">Days</div></div>
+<div class="card"><div class="number" id="h">00</div><div class="label">Hours</div></div>
+<div class="card"><div class="number" id="m">00</div><div class="label">Minutes</div></div>
+<div class="card"><div class="number" id="s">00</div><div class="label">Seconds</div></div>
+
 </div>
 
 </div>
 
-<div class="birthday-screen" id="birthdayScreen">
-<h2 class="gradient">HAPPY BIRTHDAY GK 🎂💖</h2>
+<div class="birthday-screen" id="bd">
+
+<h1>HAPPY BIRTHDAY GK 💖🎂</h1>
+
+<button onclick="unlock()">🎁 Reveal Gift</button>
+
 </div>
 
 <script>
 
-const targetDate = new Date("May 29, 2026 00:00:00").getTime();
+const target = new Date("May 29, 2026 00:00:00").getTime();
+const giftPage = "gift.html";
 
-function updateCountdown(){
+function update(){
 
 const now = new Date().getTime();
-const distance = targetDate - now;
+const diff = target - now;
 
-if(distance < 0){
-document.getElementById("birthdayScreen").style.display="flex";
+if(diff < 0){
+document.getElementById("main").style.display="none";
+document.getElementById("bd").style.display="flex";
 return;
 }
 
-document.getElementById("days").innerText =
-Math.floor(distance/(1000*60*60*24));
-
-document.getElementById("hours").innerText =
-Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-
-document.getElementById("minutes").innerText =
-Math.floor((distance%(1000*60*60))/(1000*60));
-
-document.getElementById("seconds").innerText =
-Math.floor((distance%(1000*60))/1000);
+document.getElementById("d").innerText=Math.floor(diff/(1000*60*60*24));
+document.getElementById("h").innerText=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+document.getElementById("m").innerText=Math.floor((diff%(1000*60*60))/(1000*60));
+document.getElementById("s").innerText=Math.floor((diff%(1000*60))/1000);
 
 }
 
-setInterval(updateCountdown,1000);
+setInterval(update,1000);
 
-/* ❤️ more natural floating hearts */
+/* =========================
+   💖 FIXED HEART SYSTEM
+========================= */
+
 function createHeart(){
 
 const heart=document.createElement("div");
 
 heart.classList.add("heart");
 
-const hearts=["💖","❤️","💕","💗","💘"];
-heart.innerHTML = hearts[Math.floor(Math.random()*hearts.length)];
+const emojis=["💖","❤️","💕","💗","💘"];
 
-heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=(Math.random()*20+15)+"px";
-heart.style.animationDuration=(Math.random()*4+4)+"s";
+heart.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
+
+heart.style.left = Math.random()*100 + "vw";
+
+heart.style.fontSize = (Math.random()*25 + 12) + "px";
+
+heart.style.animationDuration = (Math.random()*4 + 4) + "s";
+
+heart.style.opacity = Math.random();
 
 document.body.appendChild(heart);
 
-setTimeout(()=>heart.remove(),9000);
+setTimeout(()=>heart.remove(),8000);
 
 }
 
-setInterval(createHeart,250);
+setInterval(createHeart,200); // smoother + more continuous flow
+
+function unlock(){
+localStorage.setItem("gift","true");
+window.location.href=giftPage;
+}
 
 </script>
 
