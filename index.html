@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
+
     *{
       margin:0;
       padding:0;
@@ -25,6 +27,7 @@
       align-items:center;
       justify-content:center;
       position:relative;
+      transition:opacity 2s ease;
     }
 
     .bg{
@@ -164,6 +167,7 @@
       color:#ff4da6;
       animation:hearts 10s linear infinite;
       opacity:0.7;
+      pointer-events:none;
     }
 
     @keyframes hearts{
@@ -183,7 +187,9 @@
     .birthday-screen{
       position:fixed;
       inset:0;
-      background:#05010d;
+      background:
+      radial-gradient(circle at center,#ff149322,transparent 50%),
+      #05010d;
       display:none;
       align-items:center;
       justify-content:center;
@@ -191,6 +197,7 @@
       text-align:center;
       z-index:100;
       padding:20px;
+      animation:fadeIn 2s ease;
     }
 
     .birthday-screen h2{
@@ -205,7 +212,36 @@
       color:#ddd;
     }
 
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:scale(1.1);
+      }
+      to{
+        opacity:1;
+        transform:scale(1);
+      }
+    }
+
+    @keyframes fadeOut{
+
+      0%{
+        opacity:0;
+        transform:scale(0.5) translateY(30px);
+      }
+
+      20%{
+        opacity:1;
+      }
+
+      100%{
+        opacity:0;
+        transform:scale(1.5) translateY(-100px);
+      }
+    }
+
     @media(max-width:768px){
+
       .container{
         padding:25px;
       }
@@ -218,13 +254,16 @@
         font-size:1rem;
       }
     }
+
   </style>
 </head>
 
 <body>
 
   <div class="bg"></div>
+
   <div class="glow"></div>
+
   <div class="glow glow2"></div>
 
   <div class="container">
@@ -277,31 +316,66 @@
   </div>
 
   <div class="birthday-screen" id="birthdayScreen">
-    <h2 class="gradient">Happy Birthday GK 🎂</h2>
+
+    <h2 class="gradient">
+      Happy Birthday GK 🎂
+    </h2>
 
     <p>
       Today is all about you 💖<br><br>
-      Thank you for existing, for your smile, your warmth,
-      and for making life feel softer and happier ✨
+
+      Thank you for existing, for your smile,
+      your warmth, and for making life feel
+      softer and happier ✨
+      <br><br>
+
+      Your surprise is waiting...
     </p>
+
   </div>
 
   <script>
 
-    const targetDate = new Date("May 29, 2026 00:00:00").getTime();
+    const targetDate =
+    new Date("May 29, 2026 00:00:00").getTime();
+
+    const surpriseWebsite =
+    "https://sujalbalapure5-dot.github.io/It-s-Always-Us/";
 
     function updateCountdown(){
 
       const now = new Date().getTime();
+
       const distance = targetDate - now;
 
       if(distance < 0){
 
-        document.getElementById("birthdayScreen").style.display = "flex";
+        document.getElementById(
+          "birthdayScreen"
+        ).style.display = "flex";
+
+        document.body.style.overflow = "hidden";
+
+        createFinalCelebration();
+
+        setTimeout(()=>{
+
+          document.body.style.opacity = "0";
+
+        },4000);
+
+        setTimeout(()=>{
+
+          window.location.href = surpriseWebsite;
+
+        },6500);
+
         return;
       }
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const days = Math.floor(
+        distance / (1000 * 60 * 60 * 24)
+      );
 
       const hours = Math.floor(
         (distance % (1000 * 60 * 60 * 24))
@@ -332,6 +406,7 @@
     }
 
     setInterval(updateCountdown,1000);
+
     updateCountdown();
 
     function createHeart(){
@@ -342,7 +417,8 @@
 
       heart.innerHTML = "💖";
 
-      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.left =
+      Math.random() * 100 + "vw";
 
       heart.style.fontSize =
       Math.random() * 25 + 15 + "px";
@@ -359,7 +435,49 @@
 
     setInterval(createHeart,500);
 
+    function createFinalCelebration(){
+
+      for(let i=0;i<120;i++){
+
+        setTimeout(()=>{
+
+          const sparkle =
+          document.createElement("div");
+
+          sparkle.innerHTML =
+          ["💖","✨","🎂","🌸","💫"]
+          [Math.floor(Math.random()*5)];
+
+          sparkle.style.position = "fixed";
+
+          sparkle.style.left =
+          Math.random()*100 + "vw";
+
+          sparkle.style.top =
+          Math.random()*100 + "vh";
+
+          sparkle.style.fontSize =
+          Math.random()*40 + 20 + "px";
+
+          sparkle.style.zIndex = "9999";
+
+          sparkle.style.pointerEvents = "none";
+
+          sparkle.style.animation =
+          "fadeOut 4s forwards";
+
+          document.body.appendChild(sparkle);
+
+          setTimeout(()=>{
+            sparkle.remove();
+          },4000);
+
+        },i*80);
+      }
+    }
+
   </script>
 
 </body>
 </html>
+```
