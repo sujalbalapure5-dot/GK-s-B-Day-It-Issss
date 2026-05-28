@@ -34,8 +34,7 @@ padding:40px;
 
 h1{
 font-size:3rem;
-margin-bottom:15px;
-background:linear-gradient(90deg,#ff4da6,#ffb3d9,#9d7bff);
+background:linear-gradient(90deg,#ff4da6,#9d7bff,#ffb3d9);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
@@ -54,18 +53,18 @@ flex-wrap:wrap;
 
 .card{
 width:300px;
-padding:30px;
+padding:35px;
 border-radius:25px;
 background:rgba(255,255,255,0.06);
 border:1px solid rgba(255,255,255,0.12);
 cursor:pointer;
 transition:0.3s;
-backdrop-filter:blur(12px);
+backdrop-filter:blur(15px);
 }
 
 .card:hover{
-transform:translateY(-10px) scale(1.05);
-box-shadow:0 0 30px rgba(255,77,166,0.3);
+transform:scale(1.07) translateY(-10px);
+box-shadow:0 0 40px rgba(255,77,166,0.3);
 }
 
 .netflix{
@@ -76,16 +75,6 @@ border:1px solid #e50914;
 border:1px solid #9d7bff;
 }
 
-h2{
-margin-bottom:10px;
-}
-
-.card p{
-font-size:0.9rem;
-opacity:0.8;
-line-height:1.6;
-}
-
 </style>
 </head>
 
@@ -93,26 +82,19 @@ line-height:1.6;
 
 <div class="container">
 
-<h1>Choose Your Gift 🎁</h1>
-
-<p>Two worlds… one feeling 💖</p>
+<h1>Your Gift 🎁</h1>
+<p>Choose how you want to feel this moment 💖</p>
 
 <div class="cards">
 
-<!-- NETFLIX -->
-<div class="card netflix" onclick="openNetflix()">
+<div class="card netflix" onclick="netflix()">
 <h2>🎬 Netflix Experience</h2>
-<p>
-A cinematic emotional story made just for you.
-</p>
+<p>Cinematic emotional journey made for you</p>
 </div>
 
-<!-- ANIMATED -->
-<div class="card animated" onclick="openAnimated()">
-<h2>🎞 Animated Video</h2>
-<p>
-A visual emotional journey with music + storytelling.
-</p>
+<div class="card animated" onclick="animated()">
+<h2>🎞 Animated Story</h2>
+<p>Visual emotional storytelling with music</p>
 </div>
 
 </div>
@@ -121,14 +103,12 @@ A visual emotional journey with music + storytelling.
 
 <script>
 
-function openNetflix(){
-window.location.href =
-"https://sujalbalapure5-dot.github.io/It-s-Always-Us/";
+function netflix(){
+window.location.href="https://sujalbalapure5-dot.github.io/It-s-Always-Us/";
 }
 
-function openAnimated(){
-window.location.href =
-"https://drive.google.com/file/d/1i6CBtIGIWM1pV5N6gPmlXm3U5O4-8G3F/view";
+function animated(){
+window.location.href="https://drive.google.com/file/d/1i6CBtIGIWM1pV5N6gPmlXm3U5O4-8G3F/view";
 }
 
 </script>
